@@ -70,7 +70,20 @@ class _HomePageState extends State<HomePage> {
           ),
 
           // top categorized products listview
-          productCategorizedListView(),
+          productCategorizedListView(
+            title: 'Top Products',
+            subtitle: 'View More',
+            category: 'top products',
+          ),
+
+          // trending products listview
+          productCategorizedListView(
+            title: 'Trending',
+            subtitle: 'View More',
+            category: 'trending',
+          ),
+
+          // footer
         ],
       ),
     );

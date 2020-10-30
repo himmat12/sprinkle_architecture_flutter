@@ -6,19 +6,23 @@ import 'package:evaluation_task_flutter/size_config.dart';
 import 'package:flutter/material.dart';
 
 // categorized  products horizontal scrollable listview helper
-Widget productCategorizedListView() {
+Widget productCategorizedListView({
+  @required String title,
+  @required String subtitle,
+  @required String category,
+}) {
   ProductManager _productManager = sl<ProductManager>();
 
   return Container(
     padding: EdgeInsets.fromLTRB(12, 30, 12, 10),
     child: Column(children: [
       // header
-      productsHeader(leadingTitle: 'Top Products', trailing: 'View More'),
+      productsHeader(leadingTitle: title, trailing: subtitle),
       Divider(),
 
       // top products
       Observer<List<ProductModel>>(
-        stream: _productManager.productStream(category: 'top products'),
+        stream: _productManager.productStream(category: category),
         builder: (context, List<ProductModel> data) {
           return Container(
             height: SizeConfig.blockSizeVertical * 46,
