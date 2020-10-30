@@ -1,8 +1,3 @@
-import 'package:evaluation_task_flutter/managers/managers.dart';
-import 'package:evaluation_task_flutter/models/models.dart';
-import 'package:evaluation_task_flutter/observer.dart';
-import 'package:evaluation_task_flutter/service_locator.dart';
-import 'package:evaluation_task_flutter/size_config.dart';
 import 'package:evaluation_task_flutter/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -84,6 +79,7 @@ class _HomePageState extends State<HomePage> {
           ),
 
           // footer
+          footer(context),
         ],
       ),
     );

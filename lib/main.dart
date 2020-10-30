@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // home: TestPage(),
+      title: 'Gordeli Shoping',
       theme: ThemeData(
         primaryColor: Color(0xff2d3d9c),
       ),
