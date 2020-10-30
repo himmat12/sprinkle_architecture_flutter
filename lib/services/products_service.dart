@@ -9,10 +9,16 @@ class ProductService {
 
   Iterable<ProductModel> productList = [];
 
-  Future<List<ProductModel>> getProducts() async {
-    url = await rootBundle.loadString("../products.json");
+  Future<List<ProductModel>> getProducts({String category}) async {
+    url = await rootBundle.loadString("assets/products.json");
     data = json.decode(url);
     productList = data.map((e) => ProductModel.fromJson(e)).toList();
+
+    if (category.isNotEmpty || category != null) {
+      productList = productList
+          .where((element) => element.category.contains(category))
+          .toList();
+    }
     return productList;
   }
 }

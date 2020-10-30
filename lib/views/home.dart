@@ -1,12 +1,19 @@
+import 'package:evaluation_task_flutter/managers/managers.dart';
+import 'package:evaluation_task_flutter/models/models.dart';
+import 'package:evaluation_task_flutter/observer.dart';
+import 'package:evaluation_task_flutter/service_locator.dart';
+import 'package:evaluation_task_flutter/size_config.dart';
 import 'package:evaluation_task_flutter/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
-class WishListPage extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  _WishListPageState createState() => _WishListPageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _WishListPageState extends State<WishListPage> {
+class _HomePageState extends State<HomePage> {
+  ProductManager _productManager = sl<ProductManager>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -59,6 +66,39 @@ class _WishListPageState extends State<WishListPage> {
               } else {
                 return bannerImageSlider(height: 54);
               }
+            },
+          ),
+
+          // categorized  products
+          Container(
+            padding: EdgeInsets.fromLTRB(8, 10, 8, 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Top Products'),
+                Text('View More'),
+              ],
+            ),
+          ),
+
+          // top products
+          Observer<List<ProductModel>>(
+            stream: _productManager.productStream(category: 'top products'),
+            builder: (context, List<ProductModel> data) {
+              return Container(
+                height: SizeConfig.blockSizeVertical * 30,
+                child: ListView.builder(
+                  itemCount: data.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      child: Container(
+                        child: Text(data[index].title),
+                      ),
+                    );
+                  },
+                ),
+              );
             },
           ),
         ],

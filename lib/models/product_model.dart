@@ -5,7 +5,7 @@ class ProductModel {
   String description;
   String uint;
   double discount_amount;
-  double discount_rate;
+  int discount_rate;
   double sale_amount;
   String refrence;
 

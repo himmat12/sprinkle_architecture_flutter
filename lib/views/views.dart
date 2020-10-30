@@ -1,2 +1,2 @@
 export 'dashboard.dart';
-import 'wishlist.dart';
+import 'home.dart';

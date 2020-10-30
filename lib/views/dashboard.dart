@@ -1,5 +1,5 @@
 import 'package:evaluation_task_flutter/size_config.dart';
-import 'package:evaluation_task_flutter/views/wishlist.dart';
+import 'package:evaluation_task_flutter/views/home.dart';
 import 'package:evaluation_task_flutter/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -15,29 +15,14 @@ class _DashBoardPageState extends State<DashBoardPage> {
 
   void onTapped(int index) {
     setState(() {
-      _selectedIndex = index++;
+      _selectedIndex = index;
     });
   }
 
   List<Widget> bottomNavigationTabs = [
-    Container(
-      child: Column(
-        children: [
-          // image slider banner
-          LayoutBuilder(
-            builder: (context, constraints) {
-              if (constraints.maxWidth < 600) {
-                return bannerImageSlider();
-              } else {
-                return bannerImageSlider(height: 54);
-              }
-            },
-          ),
-        ],
-      ),
-    ),
-    WishListPage(),
-    WishListPage(),
+    HomePage(),
+    HomePage(),
+    HomePage(),
   ];
 
   @override
