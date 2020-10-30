@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  ProductManager _productManager = sl<ProductManager>();
+  // ProductManager _productManager = sl<ProductManager>();
 
   @override
   Widget build(BuildContext context) {
@@ -69,38 +69,8 @@ class _HomePageState extends State<HomePage> {
             },
           ),
 
-          // categorized  products
-          Container(
-            padding: EdgeInsets.fromLTRB(8, 10, 8, 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Top Products'),
-                Text('View More'),
-              ],
-            ),
-          ),
-
-          // top products
-          Observer<List<ProductModel>>(
-            stream: _productManager.productStream(category: 'top products'),
-            builder: (context, List<ProductModel> data) {
-              return Container(
-                height: SizeConfig.blockSizeVertical * 30,
-                child: ListView.builder(
-                  itemCount: data.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      child: Container(
-                        child: Text(data[index].title),
-                      ),
-                    );
-                  },
-                ),
-              );
-            },
-          ),
+          // top categorized products listview
+          productCategorizedListView(),
         ],
       ),
     );
