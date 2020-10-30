@@ -1,0 +1,98 @@
+[
+    {
+        "tite": "Product 01",
+        "image": "https://images-na.ssl-images-amazon.com/images/I/5103Xi7yQgL._SL1024_.jpg",
+        "category": "top products",
+        "qty": 1,
+        "unit": "kg",
+        "description": "This is Product 01",
+        "discount_rate": 50,
+        "discount_amount": 100,
+        "sale_price": 200,
+        "refrence": "mine"
+    },
+    {
+        "tite": "Product 02",
+        "image": "https://images-na.ssl-images-amazon.com/images/I/5103Xi7yQgL._SL1024_.jpg",
+        "category": "top products",
+        "qty": 1,
+        "unit": "kg",
+        "description": "This is Product 02",
+        "discount_rate": 50,
+        "discount_amount": 250,
+        "sale_price": 500,
+        "refrence": "mine"
+    },
+    {
+        "tite": "Product 03",
+        "image": "https://images-na.ssl-images-amazon.com/images/I/5103Xi7yQgL._SL1024_.jpg",
+        "category": "top products",
+        "qty": 1,
+        "unit": "pcs",
+        "description": "This is Product 03",
+        "discount_rate": 40,
+        "discount_amount": 100,
+        "sale_price": 240,
+        "refrence": "mine"
+    },
+    {
+        "tite": "Product 04",
+        "image": "https://images-na.ssl-images-amazon.com/images/I/5103Xi7yQgL._SL1024_.jpg",
+        "category": "top products",
+        "qty": 1,
+        "unit": "pcs",
+        "description": "This is Product 04",
+        "discount_rate": 30,
+        "discount_amount": 60,
+        "sale_price": 200,
+        "refrence": "mine"
+    },
+    {
+        "tite": "Product 05",
+        "image": "https://images-na.ssl-images-amazon.com/images/I/5103Xi7yQgL._SL1024_.jpg",
+        "category": "trending",
+        "qty": 1,
+        "unit": "kg",
+        "description": "This is Product 05",
+        "discount_rate": 50,
+        "discount_amount": 100,
+        "sale_price": 200,
+        "refrence": "mine"
+    },
+    {
+        "tite": "Product 06",
+        "image": "https://images-na.ssl-images-amazon.com/images/I/5103Xi7yQgL._SL1024_.jpg",
+        "category": "trending",
+        "qty": 1,
+        "unit": "kg",
+        "description": "This is Product 06",
+        "discount_rate": 20,
+        "discount_amount": 20,
+        "sale_price": 100,
+        "refrence": "mine"
+    },
+    {
+        "tite": "Product 07",
+        "image": "https://images-na.ssl-images-amazon.com/images/I/5103Xi7yQgL._SL1024_.jpg",
+        "category": "trending",
+        "qty": 1,
+        "unit": "kg",
+        "description": "This is Product 07",
+        "discount_rate": 50,
+        "discount_amount": 500,
+        "sale_price": 1000,
+        "refrence": "mine"
+    },
+    {
+        "tite": "Product 08",
+        "image": "https://images-na.ssl-images-amazon.com/images/I/5103Xi7yQgL._SL1024_.jpg",
+        "category": "trending",
+        "qty": 1,
+        "unit": "kg",
+        "description": "This is Product 08",
+        "discount_rate": 50,
+        "discount_amount": 100,
+        "sale_price": 200,
+        "refrence": "mine"
+    }
+]
