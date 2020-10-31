@@ -1,5 +1,6 @@
 [
     {
+        "id": 1,
         "title": "Product 01",
         "image": "https://www.refinery29.com/images/8804669.jpg?format=webp&width=720&height=864&quality=85&crop=5%3A6",
         "category": "top products",
@@ -9,9 +10,11 @@
         "discount_rate": 50,
         "discount_amount": 100,
         "sale_price": 200,
-        "refrence": "mine"
+        "refrence": "mine",
+        "wishlist": "false"
     },
     {
+        "id": 2,
         "title": "Product 02",
         "image": "https://images-na.ssl-images-amazon.com/images/I/515QGB56AFL._AC_US160_.jpg",
         "category": "top products",
@@ -21,9 +24,11 @@
         "discount_rate": 50,
         "discount_amount": 250,
         "sale_price": 500,
-        "refrence": "mine"
+        "refrence": "mine",
+        "wishlist": "false"
     },
     {
+        "id": 3,
         "title": "Product 03",
         "image": "https://images-na.ssl-images-amazon.com/images/I/41vMYgD92xL._AC_US160_.jpg",
         "category": "top products",
@@ -33,9 +38,11 @@
         "discount_rate": 40,
         "discount_amount": 100,
         "sale_price": 240,
-        "refrence": "mine"
+        "refrence": "mine",
+        "wishlist": "false"
     },
     {
+        "id": 4,
         "title": "Product 04",
         "image": "https://images-na.ssl-images-amazon.com/images/I/71cCI9QPwYL._AC_UL320_SR222,320_.jpg",
         "category": "top products",
@@ -45,9 +52,11 @@
         "discount_rate": 30,
         "discount_amount": 60,
         "sale_price": 200,
-        "refrence": "mine"
+        "refrence": "mine",
+        "wishlist": "false"
     },
     {
+        "id": 5,
         "title": "Product 05",
         "image": "https://images-na.ssl-images-amazon.com/images/I/71SfFWK2AUL._AC_UL320_SR222,320_.jpg",
         "category": "trending",
@@ -57,9 +66,11 @@
         "discount_rate": 50,
         "discount_amount": 100,
         "sale_price": 200,
-        "refrence": "mine"
+        "refrence": "mine",
+        "wishlist": "false"
     },
     {
+        "id": 6,
         "title": "Product 06",
         "image": "https://m.media-amazon.com/images/I/81vVhNmk8JL._AC_UL320_.jpg",
         "category": "trending",
@@ -69,9 +80,11 @@
         "discount_rate": 20,
         "discount_amount": 20,
         "sale_price": 100,
-        "refrence": "mine"
+        "refrence": "mine",
+        "wishlist": "false"
     },
     {
+        "id": 7,
         "title": "Product 07",
         "image": "https://m.media-amazon.com/images/I/81jUdr9d9qL._AC_UL320_.jpg",
         "category": "trending",
@@ -81,9 +94,11 @@
         "discount_rate": 50,
         "discount_amount": 500,
         "sale_price": 1000,
-        "refrence": "mine"
+        "refrence": "mine",
+        "wishlist": "false"
     },
     {
+        "id": 8,
         "title": "Product 08",
         "image": "https://m.media-amazon.com/images/I/91qC+UYYwIL._AC_UL320_.jpg",
         "category": "trending",
@@ -93,6 +108,7 @@
         "discount_rate": 50,
         "discount_amount": 100,
         "sale_price": 200,
-        "refrence": "mine"
+        "refrence": "mine",
+        "wishlist": "false"
     }
 ]

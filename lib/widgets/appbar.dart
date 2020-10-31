@@ -1,3 +1,4 @@
+import 'package:evaluation_task_flutter/views/views.dart';
 import 'package:flutter/material.dart';
 
 Widget appBar(
@@ -5,11 +6,17 @@ Widget appBar(
     @required TextEditingController textEditingController}) {
   return AppBar(
     elevation: 0,
-    title: Container(
-      height: 30,
-      child: Image.asset(
-        'assets/logo.png',
-        fit: BoxFit.scaleDown,
+    title: GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => DashBoardPage()));
+      },
+      child: Container(
+        height: 30,
+        child: Image.asset(
+          'assets/logo.png',
+          fit: BoxFit.scaleDown,
+        ),
       ),
     ),
     bottom: PreferredSize(
@@ -29,7 +36,10 @@ Widget appBar(
                 suffixIcon: FlatButton(
                   color: Colors.blueGrey.shade100,
                   onPressed: () {},
-                  child: Text('Search'),
+                  child: Text(
+                    'Search',
+                    style: TextStyle(color: Color(0xff2d3d9c)),
+                  ),
                 ),
                 contentPadding: EdgeInsets.all(10),
                 border: InputBorder.none,

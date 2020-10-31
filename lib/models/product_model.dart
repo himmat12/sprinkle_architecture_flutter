@@ -1,4 +1,5 @@
 class ProductModel {
+  int id;
   String title;
   String image;
   String category;
@@ -9,9 +10,26 @@ class ProductModel {
   int discount_rate;
   int sale_amount;
   String refrence;
+  String wishlist;
+
+  ProductModel({
+    this.id,
+    this.title,
+    this.image,
+    this.category,
+    this.description,
+    this.unit,
+    this.qty,
+    this.discount_rate,
+    this.discount_amount,
+    this.sale_amount,
+    this.refrence,
+    this.wishlist,
+  });
 
   ProductModel.fromJson(Map<String, dynamic> json)
-      : title = json['title'],
+      : id = json['id'],
+        title = json['title'],
         image = json['image'],
         category = json['category'],
         qty = json['qty'],
@@ -20,5 +38,6 @@ class ProductModel {
         discount_amount = json['discount_amount'],
         discount_rate = json['discount_rate'],
         sale_amount = json['sale_price'],
-        refrence = json['refrence'];
+        refrence = json['refrence'],
+        wishlist = json['wishlist'];
 }

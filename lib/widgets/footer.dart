@@ -1,4 +1,5 @@
 import 'package:evaluation_task_flutter/size_config.dart';
+import 'package:evaluation_task_flutter/views/views.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -34,11 +35,17 @@ Widget footer(BuildContext context) {
             ],
           ),
         ),
-        Container(
-          height: 28,
-          child: Image.asset(
-            'assets/logo.png',
-            fit: BoxFit.scaleDown,
+        GestureDetector(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => DashBoardPage()));
+          },
+          child: Container(
+            height: 28,
+            child: Image.asset(
+              'assets/logo.png',
+              fit: BoxFit.scaleDown,
+            ),
           ),
         ),
         Container(

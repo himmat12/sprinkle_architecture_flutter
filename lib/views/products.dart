@@ -32,7 +32,17 @@ class _ProductsState extends State<Products>
             topBanner(),
 
             // product listview
-            productListView(context),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                if (constraints.maxWidth < 600) {
+                  return productListView(context: context);
+                } else {
+                  return productListView(
+                      context: context,
+                      height: SizeConfig.blockSizeVertical * 64);
+                }
+              },
+            ),
 
             // footer
             footer(context),
@@ -45,7 +55,7 @@ class _ProductsState extends State<Products>
 
 // product listview
 
-Widget productListView(BuildContext context) {
+Widget productListView({@required BuildContext context, double height}) {
   final CategoryProvider categoryProvider =
       Provider.of<CategoryProvider>(context);
 
@@ -132,7 +142,8 @@ Widget productListView(BuildContext context) {
                             children: [
                               // image
                               Container(
-                                height: SizeConfig.blockSizeVertical * 30,
+                                height:
+                                    height ?? SizeConfig.blockSizeVertical * 44,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   image: DecorationImage(

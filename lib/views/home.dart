@@ -33,16 +33,14 @@ class _HomePageState extends State<HomePage> {
           LayoutBuilder(
             builder: (context, constraints) {
               if (constraints.maxWidth < 600) {
-                return productCategorizedListViewHorizontal(
-                  context: context,
+                return ProductCategorizedListViewHorizontal(
                   title: 'Top Products',
                   subtitle: 'View More',
                   category: 'top products',
                 );
               } else {
-                return productCategorizedListViewHorizontal(
+                return ProductCategorizedListViewHorizontal(
                   height: SizeConfig.blockSizeVertical * 56,
-                  context: context,
                   title: 'Top Products',
                   subtitle: 'View More',
                   category: 'top products',
@@ -55,16 +53,14 @@ class _HomePageState extends State<HomePage> {
           LayoutBuilder(
             builder: (context, constraints) {
               if (constraints.maxWidth < 600) {
-                return productCategorizedListViewHorizontal(
-                  context: context,
+                return ProductCategorizedListViewHorizontal(
                   title: 'Trending',
                   subtitle: 'View More',
                   category: 'trending',
                 );
               } else {
-                return productCategorizedListViewHorizontal(
+                return ProductCategorizedListViewHorizontal(
                   height: SizeConfig.blockSizeVertical * 56,
-                  context: context,
                   title: 'Trending',
                   subtitle: 'View More',
                   category: 'trending',
