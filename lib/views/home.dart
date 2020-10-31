@@ -1,3 +1,4 @@
+import 'package:evaluation_task_flutter/size_config.dart';
 import 'package:evaluation_task_flutter/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -15,43 +16,7 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         children: [
           // top banner
-          Container(
-            padding: EdgeInsets.all(10),
-            // height: SizeConfig.blockSizeVertical * 6,
-            color: Color(
-              0xffffc830,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "TO ORDER CALL ",
-                  style: TextStyle(
-                    letterSpacing: 0.2,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                Text(
-                  "+9779849037497",
-                  style: TextStyle(
-                    color: Colors.blue.shade500,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                Text(", "),
-                Text(
-                  "+9779849037497",
-                  style: TextStyle(
-                    color: Colors.blue.shade500,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ],
-            ),
-          ),
+          topBanner(),
 
           // image slider banner
           LayoutBuilder(
@@ -65,17 +30,47 @@ class _HomePageState extends State<HomePage> {
           ),
 
           // top categorized products listview
-          productCategorizedListView(
-            title: 'Top Products',
-            subtitle: 'View More',
-            category: 'top products',
+          LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth < 600) {
+                return productCategorizedListViewHorizontal(
+                  context: context,
+                  title: 'Top Products',
+                  subtitle: 'View More',
+                  category: 'top products',
+                );
+              } else {
+                return productCategorizedListViewHorizontal(
+                  height: SizeConfig.blockSizeVertical * 56,
+                  context: context,
+                  title: 'Top Products',
+                  subtitle: 'View More',
+                  category: 'top products',
+                );
+              }
+            },
           ),
 
           // trending products listview
-          productCategorizedListView(
-            title: 'Trending',
-            subtitle: 'View More',
-            category: 'trending',
+          LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth < 600) {
+                return productCategorizedListViewHorizontal(
+                  context: context,
+                  title: 'Trending',
+                  subtitle: 'View More',
+                  category: 'trending',
+                );
+              } else {
+                return productCategorizedListViewHorizontal(
+                  height: SizeConfig.blockSizeVertical * 56,
+                  context: context,
+                  title: 'Trending',
+                  subtitle: 'View More',
+                  category: 'trending',
+                );
+              }
+            },
           ),
 
           // footer

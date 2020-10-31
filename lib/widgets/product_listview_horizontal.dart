@@ -1,15 +1,20 @@
 import 'package:evaluation_task_flutter/managers/managers.dart';
 import 'package:evaluation_task_flutter/models/models.dart';
 import 'package:evaluation_task_flutter/observer.dart';
+import 'package:evaluation_task_flutter/providers/providers.dart';
 import 'package:evaluation_task_flutter/service_locator.dart';
 import 'package:evaluation_task_flutter/size_config.dart';
+import 'package:evaluation_task_flutter/views/views.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 // categorized  products horizontal scrollable listview helper
-Widget productCategorizedListView({
+Widget productCategorizedListViewHorizontal({
+  @required BuildContext context,
   @required String title,
   @required String subtitle,
   @required String category,
+  double height,
 }) {
   ProductManager _productManager = sl<ProductManager>();
 
@@ -17,7 +22,11 @@ Widget productCategorizedListView({
     padding: EdgeInsets.fromLTRB(12, 30, 12, 10),
     child: Column(children: [
       // header
-      productsHeader(leadingTitle: title, trailing: subtitle),
+      productsHeader(
+          leadingTitle: title,
+          trailing: subtitle,
+          context: context,
+          category: category),
       Divider(),
 
       // top products
@@ -25,7 +34,7 @@ Widget productCategorizedListView({
         stream: _productManager.productStream(category: category),
         builder: (context, List<ProductModel> data) {
           return Container(
-            height: SizeConfig.blockSizeVertical * 46,
+            height: height ?? SizeConfig.blockSizeVertical * 46,
             child: ListView.builder(
               itemCount: data.length,
               scrollDirection: Axis.horizontal,
@@ -79,13 +88,13 @@ Widget productCategorizedListView({
                                   alignment: Alignment.center,
                                   padding: EdgeInsets.all(2),
                                   decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Theme.of(context).primaryColorLight,
-                                  ),
+                                      // shape: BoxShape.circle,
+                                      // color: Theme.of(context).primaryColorLight,
+                                      ),
                                   child: Icon(
                                     Icons.favorite_outline,
-                                    // color: Colors.blue.shade400,
-                                    color: Colors.white,
+                                    color: Colors.blue.shade400,
+                                    // color: Colors.white,
                                     size: 20,
                                   ),
                                 ),
@@ -140,7 +149,7 @@ Widget productCategorizedListView({
 
                         // products brief details
                         Container(
-                          padding: EdgeInsets.all(10),
+                          padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -189,8 +198,15 @@ Widget productCategorizedListView({
 
 // products header helper
 
-Widget productsHeader(
-    {@required String leadingTitle, @required String trailing}) {
+Widget productsHeader({
+  @required String leadingTitle,
+  @required String trailing,
+  @required String category,
+  @required BuildContext context,
+}) {
+  final CategoryProvider categoryProvider =
+      Provider.of<CategoryProvider>(context);
+
   return Container(
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -204,7 +220,12 @@ Widget productsHeader(
           ),
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            categoryProvider.addCategory(category);
+
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Products()));
+          },
           child: Text(
             trailing,
             style: TextStyle(

@@ -1,5 +1,7 @@
 import 'package:evaluation_task_flutter/size_config.dart';
+import 'package:evaluation_task_flutter/test.dart';
 import 'package:evaluation_task_flutter/views/home.dart';
+import 'package:evaluation_task_flutter/views/products.dart';
 import 'package:evaluation_task_flutter/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -23,10 +25,13 @@ class _DashBoardPageState extends State<DashBoardPage>
 
   List<Widget> bottomNavigationTabs = [
     HomePage(),
+    TestPage(),
     HomePage(),
     HomePage(),
+    // ProductsPage(),
   ];
 
+// for hide on scroll bottom nav functionality //////////////////////////////
   AnimationController _hide;
 
   @override
@@ -60,6 +65,7 @@ class _DashBoardPageState extends State<DashBoardPage>
     return false;
   }
 
+//////////////////////////////////////////////////////////////////////////////
   @override
   Widget build(BuildContext context) {
     SizeConfig().initSize(context);
@@ -67,7 +73,8 @@ class _DashBoardPageState extends State<DashBoardPage>
     return NotificationListener(
       onNotification: _hideScrollNotification,
       child: Scaffold(
-        appBar: appBar(context: context, controller: _searchController),
+        appBar:
+            appBar(context: context, textEditingController: _searchController),
         drawer: drawer(context),
         bottomNavigationBar: ClipRect(
           child: SizeTransition(

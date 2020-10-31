@@ -1,2 +1,3 @@
 export 'dashboard.dart';
-import 'home.dart';
+export 'home.dart';
+export 'products.dart';

@@ -1,11 +1,20 @@
+import 'package:evaluation_task_flutter/providers/providers.dart';
 import 'package:evaluation_task_flutter/service_locator.dart';
 import 'package:evaluation_task_flutter/test.dart';
 import 'package:evaluation_task_flutter/views/views.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   setUp();
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => CategoryProvider()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

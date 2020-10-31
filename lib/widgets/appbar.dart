@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Widget appBar(
     {@required BuildContext context,
-    @required TextEditingController controller}) {
+    @required TextEditingController textEditingController}) {
   return AppBar(
     elevation: 0,
     title: Container(
@@ -24,7 +24,7 @@ Widget appBar(
               // border: Border.all(color: Colors.white),
             ),
             child: TextField(
-              controller: controller,
+              controller: textEditingController,
               decoration: InputDecoration(
                 suffixIcon: FlatButton(
                   color: Colors.blueGrey.shade100,
