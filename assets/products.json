@@ -8,8 +8,8 @@
         "unit": "kg",
         "description": "This is Product 01",
         "discount_rate": 50,
-        "discount_amount": 100,
-        "sale_price": 200,
+        "discount_amount": 200,
+        "sale_price": 100,
         "refrence": "mine",
         "wishlist": "false"
     },
@@ -22,8 +22,8 @@
         "unit": "kg",
         "description": "This is Product 02",
         "discount_rate": 50,
-        "discount_amount": 250,
-        "sale_price": 500,
+        "discount_amount": 500,
+        "sale_price": 250,
         "refrence": "mine",
         "wishlist": "false"
     },
@@ -36,8 +36,8 @@
         "unit": "pcs",
         "description": "This is Product 03",
         "discount_rate": 40,
-        "discount_amount": 100,
-        "sale_price": 240,
+        "discount_amount": 240,
+        "sale_price": 144,
         "refrence": "mine",
         "wishlist": "false"
     },
@@ -50,8 +50,8 @@
         "unit": "pcs",
         "description": "This is Product 04",
         "discount_rate": 30,
-        "discount_amount": 60,
-        "sale_price": 200,
+        "discount_amount": 200,
+        "sale_price": 60,
         "refrence": "mine",
         "wishlist": "false"
     },
@@ -64,8 +64,8 @@
         "unit": "kg",
         "description": "This is Product 05",
         "discount_rate": 50,
-        "discount_amount": 100,
-        "sale_price": 200,
+        "discount_amount": 200,
+        "sale_price": 100,
         "refrence": "mine",
         "wishlist": "false"
     },
@@ -78,8 +78,8 @@
         "unit": "kg",
         "description": "This is Product 06",
         "discount_rate": 20,
-        "discount_amount": 20,
-        "sale_price": 100,
+        "discount_amount": 100,
+        "sale_price": 80,
         "refrence": "mine",
         "wishlist": "false"
     },
@@ -92,8 +92,8 @@
         "unit": "kg",
         "description": "This is Product 07",
         "discount_rate": 50,
-        "discount_amount": 500,
-        "sale_price": 1000,
+        "discount_amount": 1000,
+        "sale_price": 500,
         "refrence": "mine",
         "wishlist": "false"
     },
@@ -106,8 +106,8 @@
         "unit": "kg",
         "description": "This is Product 08",
         "discount_rate": 50,
-        "discount_amount": 100,
-        "sale_price": 200,
+        "discount_amount": 200,
+        "sale_price": 100,
         "refrence": "mine",
         "wishlist": "false"
     }

@@ -212,7 +212,7 @@ Widget productListView({@required BuildContext context, double height}) {
                                 ),
                               ),
 
-                              // wishlist icon
+                              // cart icon
                               Positioned(
                                 bottom: 5,
                                 right: 5,
@@ -240,7 +240,7 @@ Widget productListView({@required BuildContext context, double height}) {
 
                           // products brief details
                           Container(
-                            padding: EdgeInsets.all(10),
+                            padding: EdgeInsets.fromLTRB(10, 18, 10, 10),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [

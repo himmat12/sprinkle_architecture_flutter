@@ -6,9 +6,31 @@ class WishListProvider extends ChangeNotifier {
   List<ProductModel> _productsList = [];
 
   void addToWishlist(ProductModel product) {
-    _productsList.map((e) => e.id.compareTo(product.id));
-    notifyListeners();
+    // if (_productsList.isEmpty) {
+    //   _productsList.add(product);
+    // } else {
+    //   _productsList.forEach((element) {
+    //     if (element.id != product.id) {
+    //       _productsList.add(product);
+    //     }
+    //   });
+
+    _productsList.add(product);
+    // ProductModel data;
+    // data = _productsList.last;
+
+    // if (_productsList.isEmpty) {
+    //   _productsList.add(product);
+    // }
+
+    // if (_productsList.length > 0) {
+    //   if (data.id != product.id) {
+    //     _productsList.add(product);
+    //   }
+    // }
   }
+
+  notifyListeners();
 
   void removeFromWishlist(int id) {
     _productsList.removeWhere((element) => element.id == id);

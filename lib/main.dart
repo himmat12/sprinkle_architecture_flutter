@@ -1,3 +1,4 @@
+import 'package:evaluation_task_flutter/providers/product_details_provider.dart';
 import 'package:evaluation_task_flutter/providers/providers.dart';
 import 'package:evaluation_task_flutter/service_locator.dart';
 import 'package:evaluation_task_flutter/test.dart';
@@ -12,6 +13,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (context) => CategoryProvider()),
         ChangeNotifierProvider(create: (context) => WishListProvider()),
+        ChangeNotifierProvider(create: (context) => ProductDetailsProvider()),
       ],
       child: MyApp(),
     ),

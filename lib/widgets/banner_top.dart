@@ -4,9 +4,7 @@ Widget topBanner() {
   return Container(
     padding: EdgeInsets.all(10),
     // height: SizeConfig.blockSizeVertical * 6,
-    color: Color(
-      0xffffc830,
-    ),
+    color: Color(0xffffc830),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
