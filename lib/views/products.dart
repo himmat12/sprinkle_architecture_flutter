@@ -4,6 +4,7 @@ import 'package:evaluation_task_flutter/observer.dart';
 import 'package:evaluation_task_flutter/providers/providers.dart';
 import 'package:evaluation_task_flutter/service_locator.dart';
 import 'package:evaluation_task_flutter/size_config.dart';
+import 'package:evaluation_task_flutter/views/views.dart';
 import 'package:evaluation_task_flutter/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -54,12 +55,19 @@ class _ProductsState extends State<Products>
 }
 
 // product listview
-
 Widget productListView({@required BuildContext context, double height}) {
+  final WishListProvider wishListProvider =
+      Provider.of<WishListProvider>(context);
+
   final CategoryProvider categoryProvider =
       Provider.of<CategoryProvider>(context);
 
+  final ProductDetailsProvider productDetailsProvider =
+      Provider.of<ProductDetailsProvider>(context);
+
   ProductManager _productManager = sl<ProductManager>();
+
+  ProductModel product;
 
   return Container(
     padding: EdgeInsets.fromLTRB(12, 30, 12, 10),
@@ -122,164 +130,228 @@ Widget productListView({@required BuildContext context, double height}) {
           stream: _productManager.productStream(
               category: categoryProvider.category),
           builder: (context, List<ProductModel> data) {
-            return Container(
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: data.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    child: Container(
-                      // width: SizeConfig.blockSizeHorizontal * 44.5,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Stack(
-                            fit: StackFit.loose,
-                            children: [
-                              // image
-                              Container(
-                                height:
-                                    height ?? SizeConfig.blockSizeVertical * 44,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  image: DecorationImage(
-                                      fit: BoxFit.scaleDown,
-                                      image: NetworkImage(data[index].image)),
-                                ),
-                              ),
+            return StatefulBuilder(
+              builder: (context, setState) {
+                return Container(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: data.length,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          productDetailsProvider
+                              .addProductTitle(data[index].title);
+                          productDetailsProvider
+                              .addProductId(data[index].id.toString());
+                          productDetailsProvider
+                              .addProductCategory(data[index].category);
 
-                              // sale off badge
-                              Positioned(
-                                top: 4,
-                                left: 0,
-                                child: Container(
-                                  padding: EdgeInsets.fromLTRB(2, 2, 2, 2),
-                                  decoration: BoxDecoration(
-                                    color: Colors.amber,
-                                  ),
-                                  child: Text(
-                                      data[index].discount_rate.toString() +
-                                          '%' +
-                                          ' off'),
-                                ),
-                              ),
-
-                              // wishlist icon
-                              Positioned(
-                                top: 5,
-                                right: 5,
-                                child: GestureDetector(
-                                  onTap: () {},
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    padding: EdgeInsets.all(2),
-                                    decoration: BoxDecoration(
-                                        // shape: BoxShape.circle,
-                                        // color: Theme.of(context)
-                                        //     .primaryColorLight,
-                                        ),
-                                    child: Icon(
-                                      Icons.favorite_outline,
-                                      color: Colors.blue.shade400,
-                                      // color: Colors.white,
-                                      size: 20,
-                                    ),
-                                  ),
-                                ),
-                              ),
-
-                              // refrence badge
-                              Positioned(
-                                bottom: 5,
-                                left: 0,
-                                child: Container(
-                                  padding: EdgeInsets.fromLTRB(4, 2, 4, 2),
-                                  decoration: BoxDecoration(
-                                    color: Colors.lightGreen,
-                                  ),
-                                  child: Text(
-                                    data[index].refrence.toUpperCase(),
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500,
-                                      letterSpacing: 0.2,
-                                    ),
-                                  ),
-                                ),
-                              ),
-
-                              // cart icon
-                              Positioned(
-                                bottom: 5,
-                                right: 5,
-                                child: GestureDetector(
-                                  onTap: () {},
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    padding: EdgeInsets.all(2),
-                                    decoration: BoxDecoration(
-                                        // shape: BoxShape.circle,
-                                        // color: Theme.of(context)
-                                        //     .primaryColorLight,
-                                        ),
-                                    child: Icon(
-                                      Icons.add_shopping_cart_outlined,
-                                      // color: Colors.blue.shade400,
-                                      // color: Colors.white,
-                                      size: 20,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-
-                          // products brief details
-                          Container(
-                            padding: EdgeInsets.fromLTRB(10, 18, 10, 10),
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ProductDetailsPage()));
+                        },
+                        child: Card(
+                          child: Container(
+                            // width: SizeConfig.blockSizeHorizontal * 44.5,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                            ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  data[index].title,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    letterSpacing: 0.2,
-                                  ),
+                                Stack(
+                                  fit: StackFit.loose,
+                                  children: [
+                                    // image
+                                    Container(
+                                      height: height ??
+                                          SizeConfig.blockSizeVertical * 44,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        image: DecorationImage(
+                                            fit: BoxFit.scaleDown,
+                                            image: NetworkImage(
+                                                data[index].image)),
+                                      ),
+                                    ),
+
+                                    // sale off badge
+                                    Positioned(
+                                      top: 4,
+                                      left: 0,
+                                      child: Container(
+                                        padding:
+                                            EdgeInsets.fromLTRB(2, 2, 2, 2),
+                                        decoration: BoxDecoration(
+                                          color: Colors.amber,
+                                        ),
+                                        child: Text(data[index]
+                                                .discount_rate
+                                                .toString() +
+                                            '%' +
+                                            ' off'),
+                                      ),
+                                    ),
+
+                                    // wishlist icon
+                                    Positioned(
+                                      top: 5,
+                                      right: 5,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          // product
+                                          product = ProductModel(
+                                            id: data[index].id,
+                                            title: data[index].title,
+                                            image: data[index].image,
+                                            description:
+                                                data[index].description,
+                                            category: data[index].category,
+                                            discount_rate:
+                                                data[index].discount_rate,
+                                            discount_amount:
+                                                data[index].discount_amount,
+                                            sale_amount:
+                                                data[index].sale_amount,
+                                            unit: data[index].unit,
+                                            qty: data[index].qty,
+                                            refrence: data[index].refrence,
+                                            wishlist: data[index].wishlist,
+                                          );
+
+                                          // add product to wishlist
+                                          wishListProvider
+                                              .addToWishlist(product);
+
+                                          // if (wishListProvider.productList.isEmpty) {
+                                          //   wishListProvider.addToWishlist(product);
+                                          // }
+
+                                          // wishListProvider.productList
+                                          //     .forEach((element) {
+                                          //   if (element.id != data[index].id) {
+                                          //     wishListProvider.addToWishlist(product);
+                                          //   }
+                                          // });
+
+                                          // setting persistent data
+                                          // addWishlistPrefs(data[index].id.toString());
+
+                                          setState(() {
+                                            data[index].wishlist = "true";
+                                          });
+
+                                          print(wishListProvider.count);
+                                        },
+                                        child: data[index].wishlist == "false"
+                                            ? wishListIcon(
+                                                icon: Icons
+                                                    .favorite_border_outlined,
+                                                color: Colors.blue.shade400)
+                                            : wishListIcon(
+                                                icon: Icons.favorite,
+                                                color: Colors.red),
+                                      ),
+                                    ),
+
+                                    // refrence badge
+                                    Positioned(
+                                      bottom: 5,
+                                      left: 0,
+                                      child: Container(
+                                        padding:
+                                            EdgeInsets.fromLTRB(4, 2, 4, 2),
+                                        decoration: BoxDecoration(
+                                          color: Colors.lightGreen,
+                                        ),
+                                        child: Text(
+                                          data[index].refrence.toUpperCase(),
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w500,
+                                            letterSpacing: 0.2,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+
+                                    // cart icon
+                                    Positioned(
+                                      bottom: 5,
+                                      right: 5,
+                                      child: GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          padding: EdgeInsets.all(2),
+                                          decoration: BoxDecoration(
+                                              // shape: BoxShape.circle,
+                                              // color: Theme.of(context)
+                                              //     .primaryColorLight,
+                                              ),
+                                          child: Icon(
+                                            Icons.add_shopping_cart_outlined,
+                                            // color: Colors.blue.shade400,
+                                            // color: Colors.white,
+                                            size: 20,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  'Rs. ' +
-                                      data[index].discount_amount.toString() +
-                                      ' / ' +
-                                      data[index].unit,
-                                  style: TextStyle(
-                                    decoration: TextDecoration.lineThrough,
-                                    color: Colors.red,
-                                  ),
-                                ),
-                                Text(
-                                  'Rs. ' +
-                                      data[index].sale_amount.toString() +
-                                      ' / ' +
-                                      data[index].unit,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    letterSpacing: 0.2,
+
+                                // products brief details
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(10, 18, 10, 10),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        data[index].title,
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          letterSpacing: 0.2,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Rs. ' +
+                                            data[index]
+                                                .discount_amount
+                                                .toString() +
+                                            ' / ' +
+                                            data[index].unit,
+                                        style: TextStyle(
+                                          decoration:
+                                              TextDecoration.lineThrough,
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Rs. ' +
+                                            data[index].sale_amount.toString() +
+                                            ' / ' +
+                                            data[index].unit,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          letterSpacing: 0.2,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
+                        ),
+                      );
+                    },
+                  ),
+                );
+              },
             );
           },
         ),

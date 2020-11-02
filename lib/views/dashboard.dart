@@ -2,6 +2,7 @@ import 'package:evaluation_task_flutter/size_config.dart';
 import 'package:evaluation_task_flutter/test.dart';
 import 'package:evaluation_task_flutter/views/home.dart';
 import 'package:evaluation_task_flutter/views/products.dart';
+import 'package:evaluation_task_flutter/views/views.dart';
 import 'package:evaluation_task_flutter/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -25,10 +26,9 @@ class _DashBoardPageState extends State<DashBoardPage>
 
   List<Widget> bottomNavigationTabs = [
     HomePage(),
-    TestPage(),
+    WishListPage(),
     HomePage(),
     HomePage(),
-    // ProductsPage(),
   ];
 
 // for hide on scroll bottom nav functionality //////////////////////////////
@@ -81,30 +81,39 @@ class _DashBoardPageState extends State<DashBoardPage>
             sizeFactor: _hide,
             axisAlignment: -1.0,
             child: BottomNavigationBar(
+              type: BottomNavigationBarType.shifting,
               onTap: onTapped,
               currentIndex: _selectedIndex,
-              backgroundColor: Color(0xff3343a1),
               elevation: 0,
-              showSelectedLabels: false,
+              // showSelectedLabels: false,
               showUnselectedLabels: false,
               iconSize: 30.0,
-              unselectedItemColor: Colors.white70,
+              unselectedItemColor: Colors.white54,
               selectedItemColor: Colors.white70,
               items: [
                 BottomNavigationBarItem(
+                  backgroundColor: Color(0xff3343a1),
+                  icon: Icon(Icons.home_outlined),
+                  // ignore: deprecated_member_use
+                  title: Text('Home'),
+                ),
+                BottomNavigationBarItem(
+                  backgroundColor: Color(0xff3343a1),
                   icon: Icon(Icons.favorite_border),
                   // ignore: deprecated_member_use
-                  title: Text('Wish List'),
+                  title: Text('Wishlist'),
                 ),
                 BottomNavigationBarItem(
+                  backgroundColor: Color(0xff3343a1),
                   icon: Icon(Icons.person_outline),
                   // ignore: deprecated_member_use
-                  title: Text('Wish List'),
+                  title: Text('Profile'),
                 ),
                 BottomNavigationBarItem(
+                  backgroundColor: Color(0xff3343a1),
                   icon: Icon(Icons.shopping_cart_outlined),
                   // ignore: deprecated_member_use
-                  title: Text('Wish List'),
+                  title: Text('Cart'),
                 ),
               ],
             ),
@@ -113,7 +122,13 @@ class _DashBoardPageState extends State<DashBoardPage>
         body: SingleChildScrollView(
           child: Column(
             children: [
+              // top banner
+              topBanner(),
+
               bottomNavigationTabs[_selectedIndex],
+
+              // footer
+              footer(context),
             ],
           ),
         ),

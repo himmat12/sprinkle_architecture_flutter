@@ -15,9 +15,6 @@ class _HomePageState extends State<HomePage> {
     return Container(
       child: Column(
         children: [
-          // top banner
-          topBanner(),
-
           // image slider banner
           LayoutBuilder(
             builder: (context, constraints) {
@@ -68,9 +65,6 @@ class _HomePageState extends State<HomePage> {
               }
             },
           ),
-
-          // footer
-          footer(context),
         ],
       ),
     );

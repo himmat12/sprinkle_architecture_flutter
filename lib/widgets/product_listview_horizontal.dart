@@ -6,6 +6,7 @@ import 'package:evaluation_task_flutter/service_locator.dart';
 import 'package:evaluation_task_flutter/services/products_service.dart';
 import 'package:evaluation_task_flutter/size_config.dart';
 import 'package:evaluation_task_flutter/views/views.dart';
+import 'package:evaluation_task_flutter/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -349,20 +350,6 @@ Widget productsHeader({
                 ),
         ),
       ],
-    ),
-  );
-}
-
-// wishlist icon
-
-Widget wishListIcon({@required IconData icon, Color color}) {
-  return Container(
-    alignment: Alignment.center,
-    padding: EdgeInsets.all(2),
-    child: Icon(
-      icon,
-      color: color,
-      size: 20,
     ),
   );
 }
