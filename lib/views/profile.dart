@@ -229,6 +229,20 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
           ),
+
+          //  logout  btn
+          GestureDetector(
+            onTap: () {},
+            child: Text(
+              'Logout',
+              style: TextStyle(
+                color: Color(0xff3343a1),
+                decoration: TextDecoration.underline,
+                letterSpacing: 0.3,
+                fontSize: 14,
+              ),
+            ),
+          ),
         ],
       ),
     );

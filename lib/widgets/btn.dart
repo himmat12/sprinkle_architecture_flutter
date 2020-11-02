@@ -22,6 +22,7 @@ Widget btn({
       ),
       child: Text(
         title.toUpperCase(),
+        textAlign: TextAlign.center,
         style: TextStyle(
           color: textColor,
           fontSize: 14,

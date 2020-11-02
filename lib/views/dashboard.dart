@@ -28,7 +28,7 @@ class _DashBoardPageState extends State<DashBoardPage>
     HomePage(),
     WishListPage(),
     ProfilePage(),
-    HomePage(),
+    CartPage(),
   ];
 
 // for hide on scroll bottom nav functionality //////////////////////////////
