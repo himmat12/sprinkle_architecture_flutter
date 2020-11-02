@@ -228,7 +228,7 @@ class _WishListPageState extends State<WishListPage> {
 // empty wishlist widget
 Widget emptyWishlist() {
   return Container(
-    height: SizeConfig.blockSizeVertical * 10,
+    height: 54,
     padding: EdgeInsets.all(10),
     alignment: Alignment.center,
     decoration: BoxDecoration(
@@ -260,7 +260,7 @@ Widget emptyWishlist() {
               ),
               Positioned(
                 right: 0,
-                bottom: 4,
+                bottom: 3,
                 child: Icon(
                   Icons.cancel_outlined,
                   size: 14,

@@ -12,9 +12,10 @@ Widget btn({
   return GestureDetector(
     onTap: onTap,
     child: Container(
-      height: height ?? 34,
-      width: SizeConfig.blockSizeHorizontal * width ??
-          SizeConfig.blockSizeHorizontal * 100,
+      height: height == null ? 34 : height,
+      width: (SizeConfig.blockSizeHorizontal * width) == null
+          ? SizeConfig.blockSizeHorizontal * 100
+          : SizeConfig.blockSizeHorizontal * width,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: color ?? Colors.amber,

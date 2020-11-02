@@ -28,6 +28,11 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     final ProductDetailsProvider productDetailsProvider =
         Provider.of<ProductDetailsProvider>(context);
 
+    final WishListProvider wishListProvider =
+        Provider.of<WishListProvider>(context);
+
+    ProductModel product;
+
     return Scaffold(
       appBar:
           appBar(context: context, textEditingController: _searchController),
@@ -142,22 +147,60 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                           top: 5,
                                           right: 5,
                                           child: GestureDetector(
-                                            onTap: () {},
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              padding: EdgeInsets.all(2),
-                                              decoration: BoxDecoration(
-                                                  // shape: BoxShape.circle,
-                                                  // color: Theme.of(context)
-                                                  //     .primaryColorLight,
-                                                  ),
-                                              child: Icon(
-                                                Icons.favorite_outline,
-                                                color: Colors.blue.shade400,
-                                                // color: Colors.white,
-                                                size: 20,
-                                              ),
-                                            ),
+                                            onTap: () {
+                                              // product
+                                              product = ProductModel(
+                                                id: data[index].id,
+                                                title: data[index].title,
+                                                image: data[index].image,
+                                                description:
+                                                    data[index].description,
+                                                category: data[index].category,
+                                                discount_rate:
+                                                    data[index].discount_rate,
+                                                discount_amount:
+                                                    data[index].discount_amount,
+                                                sale_amount:
+                                                    data[index].sale_amount,
+                                                unit: data[index].unit,
+                                                qty: data[index].qty,
+                                                refrence: data[index].refrence,
+                                                wishlist: data[index].wishlist,
+                                              );
+
+                                              // add product to wishlist
+                                              wishListProvider
+                                                  .addToWishlist(product);
+
+                                              // if (wishListProvider.productList.isEmpty) {
+                                              //   wishListProvider.addToWishlist(product);
+                                              // }
+
+                                              // wishListProvider.productList
+                                              //     .forEach((element) {
+                                              //   if (element.id != data[index].id) {
+                                              //     wishListProvider.addToWishlist(product);
+                                              //   }
+                                              // });
+
+                                              // setting persistent data
+                                              // addWishlistPrefs(data[index].id.toString());
+
+                                              setState(() {
+                                                data[index].wishlist = "true";
+                                              });
+
+                                              print(wishListProvider.count);
+                                            },
+                                            child: data[index].wishlist ==
+                                                    "false"
+                                                ? wishListIcon(
+                                                    icon: Icons
+                                                        .favorite_border_outlined,
+                                                    color: Colors.blue.shade400)
+                                                : wishListIcon(
+                                                    icon: Icons.favorite,
+                                                    color: Colors.red),
                                           ),
                                         ),
 

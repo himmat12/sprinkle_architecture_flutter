@@ -27,7 +27,7 @@ class _DashBoardPageState extends State<DashBoardPage>
   List<Widget> bottomNavigationTabs = [
     HomePage(),
     WishListPage(),
-    HomePage(),
+    ProfilePage(),
     HomePage(),
   ];
 
