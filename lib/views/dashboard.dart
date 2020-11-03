@@ -93,9 +93,9 @@ class _DashBoardPageState extends State<DashBoardPage>
               items: [
                 BottomNavigationBarItem(
                   backgroundColor: Color(0xff3343a1),
-                  icon: Icon(Icons.home_outlined),
+                  icon: Icon(Icons.dashboard),
                   // ignore: deprecated_member_use
-                  title: Text('Home'),
+                  title: Text('groDeli'),
                 ),
                 BottomNavigationBarItem(
                   backgroundColor: Color(0xff3343a1),

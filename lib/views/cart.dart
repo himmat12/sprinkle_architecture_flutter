@@ -11,6 +11,9 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   int _count = 1;
 
+  String _selectedDeliveryAddress;
+  String _selectedPaymentMethod;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -315,19 +318,96 @@ class _CartPageState extends State<CartPage> {
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.black12),
                   ),
+                  // delivery address lists
                   child: Column(
                     children: [
-                      radioTile(
-                        onDelete: () {},
-                        radioValue: 'Dharan',
-                        title: 'Dharan',
-                        enableDeleteBtn: true,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          // address radio options
+                          Row(
+                            children: [
+                              Radio(
+                                onChanged: (value) {
+                                  setState(() {
+                                    _selectedDeliveryAddress = value;
+                                  });
+                                },
+                                groupValue: _selectedDeliveryAddress,
+                                value: 'dharan'.toLowerCase(),
+                              ),
+                              Text(
+                                'Dharan',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  letterSpacing: 0.3,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          //  delete btn
+                          GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              // padding: EdgeInsets.fromLTRB(34, 10, 20, 0),
+                              child: Text(
+                                'Delete',
+                                style: TextStyle(
+                                  color: Color(0xff3343a1),
+                                  decoration: TextDecoration.underline,
+                                  letterSpacing: 0.3,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      radioTile(
-                        onDelete: () {},
-                        radioValue: 'Kathmandu',
-                        title: 'Kathmandu',
-                        enableDeleteBtn: true,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          // address radio options
+                          Row(
+                            children: [
+                              Radio(
+                                onChanged: (value) {
+                                  setState(() {
+                                    _selectedDeliveryAddress = value;
+                                  });
+                                },
+                                groupValue: _selectedDeliveryAddress,
+                                value: 'kathmandu'.toLowerCase(),
+                              ),
+                              Text(
+                                'Kathmandu',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  letterSpacing: 0.3,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          //  delete btn
+                          GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              // padding: EdgeInsets.fromLTRB(34, 10, 20, 0),
+                              child: Text(
+                                'Delete',
+                                style: TextStyle(
+                                  color: Color(0xff3343a1),
+                                  decoration: TextDecoration.underline,
+                                  letterSpacing: 0.3,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -370,30 +450,93 @@ class _CartPageState extends State<CartPage> {
                 ),
                 SizedBox(height: SizeConfig.blockSizeVertical * 2),
 
-                // address list radio options
+                // payment list radio options
                 Container(
                   padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.black12),
                   ),
+
+                  // payment methods lists
                   child: Column(
                     children: [
-                      radioTile(
-                        onDelete: () {},
-                        radioValue: 'cashOnDelivery',
-                        title: 'Cash OnDelivery',
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Radio(
+                                onChanged: (value) {
+                                  setState(() {
+                                    _selectedPaymentMethod = value;
+                                  });
+                                },
+                                groupValue: _selectedPaymentMethod,
+                                value: 'cashOnDelivery'.toLowerCase(),
+                              ),
+                              Text(
+                                'Cash On Delivery',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  letterSpacing: 0.3,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                      Divider(height: 0),
-                      radioTile(
-                        onDelete: () {},
-                        radioValue: 'khalti',
-                        title: 'Khalti',
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Radio(
+                                onChanged: (value) {
+                                  setState(() {
+                                    _selectedPaymentMethod = value;
+                                  });
+                                },
+                                groupValue: _selectedPaymentMethod,
+                                value: 'khalti'.toLowerCase(),
+                              ),
+                              Text(
+                                'Khalti',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  letterSpacing: 0.3,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                      Divider(height: 0),
-                      radioTile(
-                        onDelete: () {},
-                        radioValue: 'esewa',
-                        title: 'Esewa',
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Radio(
+                                onChanged: (value) {
+                                  setState(() {
+                                    _selectedPaymentMethod = value;
+                                  });
+                                },
+                                groupValue: _selectedPaymentMethod,
+                                value: 'esewa'.toLowerCase(),
+                              ),
+                              Text(
+                                'Esewa',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  letterSpacing: 0.3,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -404,6 +547,7 @@ class _CartPageState extends State<CartPage> {
 
           SizedBox(height: SizeConfig.blockSizeVertical * 2),
 
+          // confrim order btn
           btn(
             onTap: () {},
             title: 'confrim order\nrs. 480',
@@ -432,61 +576,59 @@ Widget stepsText({String text}) {
 // address radio
 Widget radioTile({
   @required String radioValue,
+  @required String groupValue,
   @required String title,
   Function onDelete,
   bool enableDeleteBtn = false,
 }) {
   String _selectedRadio;
+
   return StatefulBuilder(
     builder: (context, setState) {
-      return Column(
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          // address radio options
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // address radio options
-              Row(
-                children: [
-                  Radio(
-                    onChanged: (value) {
-                      setState(() {
-                        _selectedRadio = value;
-                      });
-                    },
-                    groupValue: _selectedRadio,
-                    value: radioValue,
-                  ),
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      letterSpacing: 0.3,
-                    ),
-                  ),
-                ],
+              Radio(
+                onChanged: (value) {
+                  setState(() {
+                    _selectedRadio = value;
+                  });
+                },
+                groupValue: _selectedRadio,
+                value: radioValue,
               ),
-
-              //  delete btn
-              enableDeleteBtn == false
-                  ? SizedBox()
-                  : GestureDetector(
-                      onTap: onDelete,
-                      child: Container(
-                        // padding: EdgeInsets.fromLTRB(34, 10, 20, 0),
-                        child: Text(
-                          'Delete',
-                          style: TextStyle(
-                            color: Color(0xff3343a1),
-                            decoration: TextDecoration.underline,
-                            letterSpacing: 0.3,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                    ),
+              // Text(
+              //   title,
+              //   style: TextStyle(
+              //     fontSize: 14,
+              //     fontWeight: FontWeight.w400,
+              //     letterSpacing: 0.3,
+              //   ),
+              // ),
             ],
           ),
+
+          //  delete btn
+          enableDeleteBtn == false
+              ? SizedBox()
+              : GestureDetector(
+                  onTap: onDelete,
+                  child: Container(
+                    // padding: EdgeInsets.fromLTRB(34, 10, 20, 0),
+                    child: Text(
+                      'Delete',
+                      style: TextStyle(
+                        color: Color(0xff3343a1),
+                        decoration: TextDecoration.underline,
+                        letterSpacing: 0.3,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                ),
         ],
       );
     },
